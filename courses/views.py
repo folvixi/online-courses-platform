@@ -44,9 +44,11 @@ def index(request):
 
     # обновляем cookie "last_visited" — добавляем 'index' в начало списка
     last = request.COOKIES.get('last_visited')
+    print(last)
     if last:
         try:
             last_list = json.loads(last)
+            print(last_list)
         except Exception:
             last_list = []
     else:
