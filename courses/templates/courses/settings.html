@@ -1,0 +1,29 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+  <h1>Настройки</h1>
+
+  <p>Текущая тема: <strong>{{ theme }}</strong></p>
+  <p>Текущий язык: <strong>{{ lang }}</strong></p>
+
+  <h3>Сменить тему</h3>
+  <p>
+    <a href="{% url 'courses:set_theme' 'light' %}?next={% url 'courses:settings' %}">Светлая</a> |
+    <a href="{% url 'courses:set_theme' 'dark' %}?next={% url 'courses:settings' %}">Тёмная</a>
+  </p>
+
+  <h3>Сменить язык</h3>
+  <p>
+    <a href="{% url 'courses:set_language' 'en' %}?next={% url 'courses:settings' %}">English</a> |
+    <a href="{% url 'courses:set_language' 'ru' %}?next={% url 'courses:settings' %}">Русский</a>
+  </p>
+
+  <h3>Последние посещённые</h3>
+  <ul>
+    {% for s in last_visited %}
+      <li>{{ s }}</li>
+    {% empty %}
+      <li>Нет данных</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,89 @@
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* контейнер */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* header */
+.site-header {
+  background: #f5f5f5;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.site-header .logo {
+  height: 40px;
+  vertical-align: middle;
+}
+.site-header nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* quick settings */
+.quick-settings {
+  float: right;
+}
+
+/* тема: светлая */
+body.theme-light {
+  background: #ffffff;
+  color: #222;
+}
+
+/* тема: тёмная */
+body.theme-dark {
+  background: #111;
+  color: #ddd;
+}
+body.theme-dark .site-header {
+  background: #222;
+  border-bottom-color: #333;
+}
+body.theme-dark .site-header nav a {
+  color: #ddd;
+}
+
+/* карточки курсов */
+.course-card {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 10px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.btn:hover { opacity: 0.9; }
+
+/* sidebar */
+.sidebar {
+  margin-top: 20px;
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+
+/* простые элементы для тёмной темы */
+body.theme-dark .course-card {
+  border-color: #333;
+  background: #1b1b1b;
+}
+body.theme-dark .sidebar {
+  background: #141414;
+}

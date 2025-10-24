@@ -1,0 +1,32 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+  {% if error %}
+    <h2>{{ error }}</h2>
+  {% else %}
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.short }}</p>
+    <p><strong>Преподаватель:</strong> {{ course.teacher }}</p>
+    <p><strong>Длительность:</strong> {{ course.duration }}</p>
+
+    <h3>Записаться на курс</h3>
+    <form method="post" action="{% url 'courses:enroll' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Записаться</button>
+    </form>
+
+    <p><a href="{% url 'courses:index' %}">Вернуться на главную</a></p>
+  {% endif %}
+
+  <aside class="sidebar">
+    <h3>Последние посещённые</h3>
+    <ul>
+      {% for s in last_visited %}
+        <li>{{ s }}</li>
+      {% empty %}
+        <li>Нет посещений</li>
+      {% endfor %}
+    </ul>
+  </aside>
+{% endblock %}

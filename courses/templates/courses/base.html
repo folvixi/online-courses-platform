@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <title>Online Courses Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'courses/css/styles.css' %}">
+</head>
+<body class="theme-{{ theme }}">
+  <header class="site-header">
+    <div class="container">
+      <img src="{% static 'courses/images/logo.png' %}" alt="logo" class="logo">
+      <nav>
+        <a href="{% url 'courses:index' %}">Главная</a>
+        <a href="{% url 'courses:settings' %}">Настройки</a>
+      </nav>
+
+      <div class="quick-settings">
+        <!-- Быстро переключаем тему и язык -->
+        <a href="{% url 'courses:set_theme' 'light' %}?next={{ request.path }}">☀️</a>
+        <a href="{% url 'courses:set_theme' 'dark' %}?next={{ request.path }}">🌙</a>
+        <a href="{% url 'courses:set_language' 'en' %}?next={{ request.path }}">EN</a>
+        <a href="{% url 'courses:set_language' 'ru' %}?next={{ request.path }}">RU</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Online Courses Platform — учебный проект</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+  <h1>Курсы</h1>
+
+  {% if message %}
+    <div class="message">{{ message }}</div>
+  {% endif %}
+
+  <div class="courses-list">
+    {% for c in courses %}
+      <div class="course-card">
+        <h2><a href="{% url 'courses:course_detail' c.slug %}">{{ c.title }}</a></h2>
+        <p>{{ c.short }}</p>
+        <p><strong>Преподаватель:</strong> {{ c.teacher }} | <strong>Длительность:</strong> {{ c.duration }}</p>
+        <a href="{% url 'courses:course_detail' c.slug %}" class="btn">Подробнее</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <aside class="sidebar">
+    <h3>Последние посещённые</h3>
+    <ul>
+      {% for s in last_visited %}
+        <li>{{ s }}</li>
+      {% empty %}
+        <li>Нет посещений</li>
+      {% endfor %}
+    </ul>
+  </aside>
+{% endblock %}
